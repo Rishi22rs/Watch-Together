@@ -76,7 +76,7 @@ export const anchorMovement=()=>{
   }
   
 const clickedFunc=(event)=>{
-  var value=event.clientX/640*100
+  var value=event.clientX/window.innerWidth*100
   player.seekTo(value/100*player.getDuration(), true);
   return value;
 } 

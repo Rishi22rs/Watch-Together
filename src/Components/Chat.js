@@ -6,6 +6,7 @@ const Chat = () => {
     const [allChat,setAllChat]=useState([])
     useEffect(()=>{
         const name=prompt('What is your name?')
+        // const name='Rishi'
         sendConn(name)
         appendMsg(`You joined`)
     },[])
@@ -34,12 +35,16 @@ const Chat = () => {
     return (
         <>
         <form>
-            <input type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg}/>
-            <button type="submit" onClick={e=>sendMsg(e)}>Send</button>    
+        <div className="input-group mb-3">
+            <input className="form-control" type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg}/>
+            <div className="input-group-append">
+                <button className="btn btn-outline-secondary" type="submit" onClick={e=>sendMsg(e)}>Send</button>    
+            </div>
+        </div>
         </form> 
         <div id='msg-container'>
-        {allChat.map(x =>
-            <h1>{x}</h1>
+        {allChat.map((x,key) =>
+            <h1 key={key}>{x}</h1>
         )}
         </div>
         </>
