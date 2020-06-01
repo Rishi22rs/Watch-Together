@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import {sendConn,socket} from './Operations'
 
 const Chat = () => {
+    const messagesEndRef = useRef(null)
     const [msg,setMsg]=useState('')
     const [allChat,setAllChat]=useState([])
     useEffect(()=>{
@@ -10,9 +11,17 @@ const Chat = () => {
         sendConn(name)
         appendMsg(`You joined`)
     },[])
+
+    console.log(messagesEndRef)
+
+    const scrollToBottom = () => {
+        if(messagesEndRef.current!==null)
+            messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+    }
     
     const appendMsg=(message)=>{
         setAllChat([...allChat,message])
+        scrollToBottom()
     }
 
     const sendMsg=(e)=>{
@@ -46,6 +55,7 @@ const Chat = () => {
         {allChat.map((x,key) =>
             <h6 key={key}>{x}</h6>
         )}
+        <div ref={messagesEndRef} style={{marginTop:40}}/>
         </div>
         </>
     )
