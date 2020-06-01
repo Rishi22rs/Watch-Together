@@ -5,8 +5,12 @@ import Chat from './Components/Chat'
 const App = () => {
   return (
     <div style={{display:'flex',flexDirection:'column'}}>
-      <Video />
-      <Chat />
+      <div className="video">
+        <Video />
+      </div>
+      <div className="chat">
+        <Chat />
+      </div>
     </div>
   );
 }

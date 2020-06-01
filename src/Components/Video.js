@@ -6,6 +6,7 @@ const YouTubeVideo =()=>{
 
   const[videoId,setVideoId]=useState('')
   const[left,setLeft]=useState(0)
+  const height=window.innerWidth*(9/16)
 
   useEffect(() => {
 
@@ -26,14 +27,14 @@ const YouTubeVideo =()=>{
   })
 
   return (
-    <div className="mx-auto" style={{width:'100%'}}>
+    <div style={{width:'100%',position:'absolute',height:'50%'}}>
     <div className="input-group mb-3">
       <input type="text" className="form-control" placeholder="Paste the youtube video link here" aria-label="Recipient's username" onChange={e=>setVideoId(e.target.value)} aria-describedby="button-addon2" />
       <div className="input-group-append">
       <button onClick={()=>loadVideo(videoId)} className="btn btn-outline-secondary">Show</button>
       </div>
     </div>
-    <div id={`youtube-player`} style={{width:'100%'}}/><br></br>
+    <div id={`youtube-player`} style={{width:'100%',height:`${height}px`}}/><br></br>
     <button className="btn btn-outline-success" onClick={()=>{
       playVideo()
       setInterval(()=>{

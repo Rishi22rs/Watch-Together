@@ -5,7 +5,7 @@ const Chat = () => {
     const [msg,setMsg]=useState('')
     const [allChat,setAllChat]=useState([])
     useEffect(()=>{
-        const name=prompt('What is your name?')
+       const name=prompt('What is your name?')
         // const name='Rishi'
         sendConn(name)
         appendMsg(`You joined`)
@@ -42,9 +42,9 @@ const Chat = () => {
             </div>
         </div>
         </form> 
-        <div id='msg-container'>
+        <div className="chat-box">
         {allChat.map((x,key) =>
-            <h1 key={key}>{x}</h1>
+            <h6 key={key}>{x}</h6>
         )}
         </div>
         </>
