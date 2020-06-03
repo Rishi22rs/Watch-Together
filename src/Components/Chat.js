@@ -1,18 +1,16 @@
 import React, { useEffect, useState,useRef } from 'react'
 import {sendConn,socket} from './Operations'
 
-const Chat = () => {
+const Chat = ({room}) => {
     const messagesEndRef = useRef(null)
     const [msg,setMsg]=useState('')
     const [allChat,setAllChat]=useState([])
     useEffect(()=>{
        const name=prompt('What is your name?')
         // const name='Rishi'
-        sendConn(name)
+        sendConn({name,room})
         appendMsg(`You joined`)
     },[])
-
-    console.log(messagesEndRef)
 
     const scrollToBottom = () => {
         if(messagesEndRef.current!==null)
@@ -32,6 +30,7 @@ const Chat = () => {
     }
 
     socket.on('user-connected',name=>{
+        console.log(name)
         appendMsg(`${name} connected`)
     })
     socket.on('chat-message',data=>{
@@ -45,7 +44,7 @@ const Chat = () => {
         <>
         <form>
         <div className="input-group mb-3">
-            <input className="form-control" type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg}/>
+            <input className="form-control" type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg} autoComplete='off'/>
             <div className="input-group-append">
                 <button className="btn btn-outline-secondary" type="submit" onClick={e=>sendMsg(e)}>Send</button>    
             </div>

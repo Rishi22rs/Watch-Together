@@ -34,6 +34,7 @@ const YouTubeVideo =()=>{
       <button onClick={()=>loadVideo(videoId)} className="btn btn-outline-secondary">Show</button>
       </div>
     </div>
+    {/* <div style={{width:'100%',height:`${height}px`,zIndex:100}}></div> */}
     <div id={`youtube-player`} style={{width:'100%',height:`${height}px`}}/><br></br>
     <button className="btn btn-outline-success" onClick={()=>{
       playVideo()

@@ -1,6 +1,7 @@
 import io from "socket.io-client";
 
 export const socket = io("https://watchtogetherapp.herokuapp.com/");
+// export const socket = io("http://localhost:8080/");
 
 let player=''
 let n=0
@@ -37,8 +38,8 @@ socket.on('thisVideo',(thisVideo)=>{
 
 ////////////////////////////////////////////////////
 
-export const sendConn=(name)=>{
-  socket.emit('new-user',name)
+export const sendConn=(data)=>{
+  socket.emit('join',data)
 }
 
 export const loadVideo=(thisVideo)=>{
