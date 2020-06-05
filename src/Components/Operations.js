@@ -1,10 +1,11 @@
 import io from "socket.io-client";
 
 export const socket = io("https://watchtogetherapp.herokuapp.com/");
-// export const socket = io("http://localhost:8080/");
-
+ //export const socket = io("http://localhost:8080/");
+ 
 let player=''
 let n=0
+let videoReady=false
 
 
 const loadVideoFunc = (videoId) => {
@@ -15,14 +16,23 @@ const loadVideoFunc = (videoId) => {
       'rel':0,
       'controls':0,
       'disablekb':0,
+    },
+    events: {
+      'onReady': makeItReady,
     }
   });
 };
 
 ////////////////////////////////////////////////////
 
+const makeItReady=()=>{
+  videoReady=true
+}
+
 socket.on('play',(play)=>{
-  playVideoFunc()
+  loadVideoFunc("https://www.youtube.com/watch?v=je_R3gEtDbw")
+  if(videoReady)
+    playVideoFunc()
 })
 
 socket.on('pause',(pause)=>{
@@ -38,8 +48,11 @@ socket.on('thisVideo',(thisVideo)=>{
 
 ////////////////////////////////////////////////////
 
-export const sendConn=(data)=>{
-  socket.emit('join',data)
+export const sendConn=(data,callback)=>{
+  let err=null
+  socket.emit('join',data,(error)=>{
+    callback(error)
+  })
 }
 
 export const loadVideo=(thisVideo)=>{

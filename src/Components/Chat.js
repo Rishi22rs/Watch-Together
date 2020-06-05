@@ -1,14 +1,22 @@
 import React, { useEffect, useState,useRef } from 'react'
 import {sendConn,socket} from './Operations'
+import { Redirect,useHistory } from 'react-router-dom'
 
 const Chat = ({room}) => {
+    const history=useHistory()
     const messagesEndRef = useRef(null)
     const [msg,setMsg]=useState('')
     const [allChat,setAllChat]=useState([])
     useEffect(()=>{
        const name=prompt('What is your name?')
         // const name='Rishi'
-        sendConn({name,room})
+        sendConn({name,room},(error)=>{
+            if(error){
+                console.log(error)
+                alert(error)
+                history.push('/')
+            }
+        })
         appendMsg(`You joined`)
     },[])
 
