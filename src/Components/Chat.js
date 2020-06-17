@@ -8,8 +8,9 @@ const Chat = ({room}) => {
     const [msg,setMsg]=useState('')
     const [allChat,setAllChat]=useState([])
     useEffect(()=>{
-       const name=prompt('What is your name?')
-        // const name='Rishi'
+        if(localStorage.getItem('chats')!==null)
+            setAllChat(localStorage.getItem('chats').split(','))
+        const name=localStorage.getItem('name')
         sendConn({name,room},(error)=>{
             if(error){
                 console.log(error)
@@ -17,7 +18,8 @@ const Chat = ({room}) => {
                 history.push('/')
             }
         })
-        appendMsg(`You joined`)
+        if(localStorage.getItem('chats')===null)
+            appendMsg(`You joined`)
     },[])
 
     const scrollToBottom = () => {
@@ -27,6 +29,7 @@ const Chat = ({room}) => {
     
     const appendMsg=(message)=>{
         setAllChat([...allChat,message])
+        localStorage.setItem('chats',allChat)
         scrollToBottom()
     }
 

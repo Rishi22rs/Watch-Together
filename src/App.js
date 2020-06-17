@@ -2,20 +2,16 @@ import React, { useEffect } from 'react'
 import Video from './Components/Video'
 import Chat from './Components/Chat'
 import { socket } from './Components/Operations'
-import {Prompt, useHistory} from 'react-router-dom'
 
 const App = ({match}) => {
-  socket.on("roomData",({room,users})=>console.log(room,users))
-  
-  const history=useHistory()
-
-  document.onbeforeunload = function(){
-    
-    return 'Are you sure you want to leave?';
-  };
   window.addEventListener("popstate", e => {
-    socket.emit('disconnectMe')
+    socket.emit('disconnect')
   })
+  console.log(localStorage.getItem('name'))
+  if(localStorage.getItem('name')===null){
+    const name=prompt('What is your name?')
+    localStorage.setItem('name',name)
+  }
 
   return (
     <div style={{display:'flex',flexDirection:'column'}}>
