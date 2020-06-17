@@ -5,7 +5,7 @@ export const socket = io("https://watchtogetherapp.herokuapp.com/");
  
 let player=''
 let n=0
-let videoReady=false
+let videoReadyHai=false
 
 export const loadVideoFunc = (videoId,room) => {
   player = new window.YT.Player(`youtube-player`, {
