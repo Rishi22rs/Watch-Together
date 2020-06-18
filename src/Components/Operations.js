@@ -1,26 +1,49 @@
 import io from "socket.io-client";
 
-export const socket = io("https://watchtogetherapp.herokuapp.com/");
-//  export const socket = io("http://localhost:8080/");
+// export const socket = io("https://watchtogetherapp.herokuapp.com/");
+ export const socket = io("http://localhost:8080/");
  
 let player=''
 let n=0
 let videoReadyHai=false
+let i=false
 
 export const loadVideoFunc = (videoId,room) => {
-  player = new window.YT.Player(`youtube-player`, {
-    videoId:videoId.split('=')[1],
-    playerVars:{
-      'rel':0,
-      'controls':0,
-      'disablekb':0,
-    }
-  });
-  console.log(player)
-  if(room!==undefined)
-    socket.emit('addVideoId',{roomName:room,videoId}) 
+  if(!i&&videoId){
+    player = new window.YT.Player(`youtube-player`, {
+      videoId:extractVideoId(videoId),
+      playerVars:{
+        'rel':0,
+        'controls':0,
+        'disablekb':0,
+        'autoplay': 0
+      }
+    });
+    console.log(player)
+    if(room!==undefined)
+      socket.emit('addVideoId',{roomName:room,videoId}) 
+  }
+  console.log(i)
+  if(i&&videoId){  
+    loadThis(extractVideoId(videoId))
+  }
+  if(videoId)i=true
 };
 
+
+const extractVideoId=(video_id)=>{
+  var ampersandPosition = video_id.indexOf('&');
+  if(ampersandPosition != -1) {
+    video_id = video_id.substring(0, ampersandPosition);
+    video_id=video_id.split('=')[1]
+    return video_id
+  }
+}
+
+const loadThis=(videoId)=>{
+  player.loadVideoById({'videoId': videoId});
+  pauseVideoFunc()
+}
 ////////////////////////////////////////////////////
 
 socket.on('play',(play)=>{
@@ -71,12 +94,10 @@ export const clicked=(event)=>{
 ////////////////////////////////////////////////////
 
 const playVideoFunc=()=>{
-  console.log(player)
 	player.playVideo()
 }
 
 const pauseVideoFunc=()=> {
-  console.log(player)
 	player.pauseVideo();
 }
 

@@ -29,15 +29,16 @@ const YouTubeVideo =({room})=>{
     }
   }
 
-  const refreshPage=()=> {
-    socket.emit('refresh')
-    window.location.reload(false);
-  }
 
-  socket.on('doRefresh',()=>{
-    refreshPage()
-    console.log('refresh')
-  })
+  // const refreshPage=()=> {
+  //   socket.emit('refresh')
+  //   window.location.reload(false);
+  // }
+
+  // socket.on('doRefresh',()=>{
+  //   refreshPage()
+  //   console.log('refresh')
+  // })
 
   const getVideoId=()=>{
     socket.emit('getVideoId',room)
@@ -64,7 +65,6 @@ const YouTubeVideo =({room})=>{
       },1000)
     }}>Play</button>
     <button className="btn btn-outline-danger" onClick={pauseVideo}>Pause</button>
-    <button className="btn btn-outline-danger" onClick={refreshPage}>Reload</button>
     {/* <button className="btn btn-outline-danger" onClick={getVideoId}>Get VideoId</button> */}
     <div id="line" onClick={(e)=>setLeft(clicked(e))}>
       <div id="anchor" style={{left:`${left}%`}}></div>
