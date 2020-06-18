@@ -7,11 +7,6 @@ const App = ({match}) => {
   window.addEventListener("popstate", e => {
     socket.emit('disconnect')
   })
-  console.log(localStorage.getItem('name'))
-  if(localStorage.getItem('name')===null){
-    const name=prompt('What is your name?')
-    localStorage.setItem('name',name)
-  }
 
   return (
     <div style={{display:'flex',flexDirection:'column'}}>

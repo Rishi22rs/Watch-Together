@@ -10,7 +10,7 @@ const Chat = ({room}) => {
     useEffect(()=>{
         if(localStorage.getItem('chats')!==null)
             setAllChat(localStorage.getItem('chats').split(','))
-        const name=localStorage.getItem('name')
+        const name=prompt('What is your name?')
         sendConn({name,room},(error)=>{
             if(error){
                 console.log(error)

@@ -37,6 +37,9 @@ const extractVideoId=(video_id)=>{
     video_id = video_id.substring(0, ampersandPosition);
     video_id=video_id.split('=')[1]
     return video_id
+  }else{
+    video_id=video_id.split('=')[1]
+    return video_id
   }
 }
 

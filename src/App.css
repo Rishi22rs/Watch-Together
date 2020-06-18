@@ -5,10 +5,11 @@
 html{
   scroll-behavior: smooth;
 }
-.main-landing{
-  background: #F3717F;
+h1,h3,p{
+  color:'#FD5739';
 }
 .heading{
+  color:#FD5638;
   margin: 10px;
   padding: 10px;
   text-align: center;
@@ -17,11 +18,23 @@ html{
   height: 100%;
 }
 .intro-innerContainer{
-  background-color: white;
+  opacity: 0.8;
+  color:#FD5638;
+  border-radius: 20px;
+  background-color: #171717;
   padding: 20px;
   margin:20px;
 }
 #create-room{
-  margin-top: 100%;
-  height: 100%;
+  position: absolute;
+  top:100%;
+  right:0;
+  left:0;
+  height:100%;
+  background-color: black;
+}
+.btn{
+  background-color:#FD5638;
+  font-size: 20px;
+  margin:10px;
 }
