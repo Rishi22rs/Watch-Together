@@ -5,8 +5,12 @@
 html{
   scroll-behavior: smooth;
 }
+#main-landing{
+  height: 300%;
+}
 h1,h3,p{
-  color:'#FD5739';
+  text-align: center;
+  color:#FD5739;
 }
 .heading{
   color:#FD5638;
@@ -16,6 +20,8 @@ h1,h3,p{
 }
 .intro{
   height: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 .intro-innerContainer{
   opacity: 0.8;
@@ -26,15 +32,88 @@ h1,h3,p{
   margin:20px;
 }
 #create-room{
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top:100%;
   right:0;
   left:0;
   height:100%;
   background-color: black;
+  line-height: 50px;
 }
 .btn{
+  max-width: 400px;
   background-color:#FD5638;
   font-size: 20px;
   margin:10px;
+  opacity: 0.8;
+}
+#room-list{
+  position: absolute;
+  top:200%;
+  right:0;
+  left:0;
+  height:100%;
+  background-color: black;
+}
+.top-btn{
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background-color: #FD5638;
+  color: black;
+  cursor: pointer;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+.inpC{
+  max-width: 400px;
+  margin: 30px auto;
+  position: relative;
+  outline: none;
+  color:#FD5638;
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  background: none;
+  border:3px solid #FD5638;
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  opacity: 0.8;
+}
+.active-room{
+  padding:30px;
+}
+.room-list-container{
+  display: flex;
+  background-color: #FD5638;
+  border-radius: 20px;
+  padding:5px;
+  opacity: 0.8;
+  margin:0 auto;
+  max-width: 400px;
+  margin-top: 20px;
+  width: 100%;
+}
+.join{
+  float: right;
+  font-size: 20px;
+  color:black;
+  left: 600px;
+  margin-right: 20px;
+}
+.room-list{
+  width:300px;
+  float: left;
+  margin-left: 10px;
+  font-size: 20px;
+  color:black;
 }

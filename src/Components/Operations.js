@@ -19,11 +19,9 @@ export const loadVideoFunc = (videoId,room) => {
         'autoplay': 0
       }
     });
-    console.log(player)
     if(room!==undefined)
       socket.emit('addVideoId',{roomName:room,videoId}) 
   }
-  console.log(i)
   if(i&&videoId){  
     loadThis(extractVideoId(videoId))
   }
@@ -50,7 +48,6 @@ const loadThis=(videoId)=>{
 ////////////////////////////////////////////////////
 
 socket.on('play',(play)=>{
-  console.log(player)
   playVideoFunc()
 })
 
