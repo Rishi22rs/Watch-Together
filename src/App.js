@@ -4,6 +4,7 @@ import Chat from './Components/Chat'
 import { socket } from './Components/Operations'
 import UsersInRoom from './Components/UsersInRoom'
 import Sky from 'react-sky'
+import Nav from './Grapics/nav.svg'
 
 const App = ({match}) => {
   window.addEventListener("popstate", e => {
@@ -27,7 +28,11 @@ const App = ({match}) => {
         size={'100px'} 
         background={'black'} 
       />
-      <button className='btn' onClick={()=>setLeft(0)}>Nav</button>
+      <div style={{display:'flex',flexDirection:'column'}}>
+        <button className='btn' style={{position:'absolute',zIndex:'10'}} onClick={()=>setLeft(0)}>&#9776;</button>
+        <h3 style={{textAlign:'right',margin:'10px'}}>Room: {match.params.room}</h3>
+      </div>
+      <hr />
       <div style={{position:'fixed',zIndex:200,left:left,transition:'0.5s'}}>
         <UsersInRoom handleNav={handleNav}/>
       </div>

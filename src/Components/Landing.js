@@ -63,7 +63,7 @@ const Landing = () => {
             <div id='room-list'>
                 <h1 className='active-room'>Active Rooms</h1>
                 <div className='room-div'>
-                {roomList.map((x,key)=><div className='room-list-container'><h6 className='room-list'>{x}</h6><Link className='join' key={key} to={`/HeyGuys/${x}`}>Join</Link></div>)}
+                {roomList.map((x,key)=><div className='room-list-container'><h5 className='room-list'>{x}</h5><Link className='join' key={key} to={`/HeyGuys/${x}`}>Join</Link></div>)}
                 </div>
             </div>
             {window.pageYOffset>40?<a className='top-btn' href='#main-landing'><img height='50' src={Top} alt='top'/></a>:<></>}

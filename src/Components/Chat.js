@@ -31,6 +31,7 @@ const Chat = ({room}) => {
     const appendMsg=(message)=>{
         setAllChat([...allChat,message])
         localStorage.setItem('chats',allChat)
+        window.scrollTo(0,window.innerHeight)
         scrollToBottom()
     }
 
@@ -55,18 +56,16 @@ const Chat = ({room}) => {
     return (
         <>
         <form>
-        <div className="input-group mb-3">
-            <input className="form-control" type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg} autoComplete='off'/>
-            <div className="input-group-append">
-                <button className="btn btn-outline-secondary" type="submit" onClick={e=>sendMsg(e)}>Send</button>    
-            </div>
+        <div style={{display:'flex',position:'fixed',width:'100%',bottom:0}}>
+            <input className='inpC' style={{margin:0,borderRadius:10,height:45,zIndex:10}} type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg} autoComplete='off'/>
+            <button className="btn" style={{height:45,margin:0,zIndex:10}} type="submit" onClick={e=>sendMsg(e)}>Send</button>    
         </div>
         </form> 
         <div className="chat-box">
         {allChat.map((x,key) =>
-            <h6 key={key}>{x}</h6>
+            <h6 ref={messagesEndRef} style={{textAlign:'left'}} key={key}>{x}</h6>
         )}
-        <div ref={messagesEndRef} style={{marginTop:40}}/>
+        <div  style={{marginTop:40}}/>
         </div>
         </>
     )
