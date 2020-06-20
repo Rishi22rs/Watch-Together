@@ -8,7 +8,7 @@ html{
 #main-landing{
   height: 300%;
 }
-h1,h3,p{
+h1,h3,h6,p{
   text-align: center;
   color:#FD5739;
 }
@@ -102,6 +102,7 @@ h1,h3,p{
   max-width: 400px;
   margin-top: 20px;
   width: 100%;
+  overflow-y: auto;
 }
 .join{
   float: right;
@@ -116,4 +117,32 @@ h1,h3,p{
   margin-left: 10px;
   font-size: 20px;
   color:black;
+}
+.room-div{
+  overflow:auto;
+  height:50%;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #4b2b26; 
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+  background: #FD5638; 
+  border-radius: 20px;
+}
+.room-members{
+  position: fixed;
+  overflow-y:auto;
+  width:300px;
+  height: 100%;
+  background-color: rgb(39, 39, 39);
+  color: #FD5638;
+  z-index: 100;
+}
+.userName{
+  font-size: 20px;
+  text-align: center;
 }

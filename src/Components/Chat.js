@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef } from 'react'
 import {sendConn,socket} from './Operations'
-import { Redirect,useHistory } from 'react-router-dom'
+import {useHistory } from 'react-router-dom'
 
 const Chat = ({room}) => {
     const history=useHistory()
@@ -10,7 +10,8 @@ const Chat = ({room}) => {
     useEffect(()=>{
         if(localStorage.getItem('chats')!==null)
             setAllChat(localStorage.getItem('chats').split(','))
-        const name=prompt('What is your name?')
+        // const name=prompt('What is your name?')
+        const name='Rishi'
         sendConn({name,room},(error)=>{
             if(error){
                 console.log(error)

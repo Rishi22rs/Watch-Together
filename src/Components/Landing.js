@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { Link, Redirect, useHistory } from 'react-router-dom'
 import {socket} from './Operations'
-import '../App.css'
+import '../Landing.css'
 import Sky from 'react-sky';
 import Top from '../Grapics/top.svg'
 
@@ -38,12 +38,12 @@ const Landing = () => {
         <div id="main-landing">
             <Sky
                 images={{
-                    0: "https://lh3.googleusercontent.com/proxy/u6clQpTi1D-EeIfvM_Pmei1zu9w2cT_6KtR9icleGKf6vC0DZ5mtqHnDJnWyTe3gwpQ8I5vUlDoiKQZGwjBoKLc05yTbhkNPYNg5smDUIcS89t4q8lk", 
+                    0: "https://securityapp22.000webhostapp.com/yt.png", 
                 }}
-                how={40} /* Pass the number of images Sky will render chosing randomly */
-                time={5} /* time of animation */
-                size={'50px'} /* size of the rendered images */
-                background={'black'} /* color of background */
+                how={40} 
+                time={5} 
+                size={'100px'} 
+                background={'black'} 
             />
             <div className="intro">
                 <h1 className="heading">Quarantine buddies</h1>
@@ -62,7 +62,9 @@ const Landing = () => {
             </div>
             <div id='room-list'>
                 <h1 className='active-room'>Active Rooms</h1>
+                <div className='room-div'>
                 {roomList.map((x,key)=><div className='room-list-container'><h6 className='room-list'>{x}</h6><Link className='join' key={key} to={`/HeyGuys/${x}`}>Join</Link></div>)}
+                </div>
             </div>
             {window.pageYOffset>40?<a className='top-btn' href='#main-landing'><img height='50' src={Top} alt='top'/></a>:<></>}
         </div>
