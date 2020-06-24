@@ -1,17 +1,17 @@
 import React, { useEffect, useState,useRef } from 'react'
 import {sendConn,socket} from './Operations'
 import {useHistory } from 'react-router-dom'
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 const Chat = ({room}) => {
     const history=useHistory()
-    const messagesEndRef = useRef(null)
     const [msg,setMsg]=useState('')
     const [allChat,setAllChat]=useState([])
     useEffect(()=>{
         if(localStorage.getItem('chats')!==null)
             setAllChat(localStorage.getItem('chats').split(','))
-        // const name=prompt('What is your name?')
-        const name='Rishi'
+        const name=prompt('What is your name?')
+        // const name='Rishi'
         sendConn({name,room},(error)=>{
             if(error){
                 console.log(error)
@@ -23,16 +23,11 @@ const Chat = ({room}) => {
             appendMsg(`You joined`)
     },[])
 
-    const scrollToBottom = () => {
-        if(messagesEndRef.current!==null)
-            messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
-    }
     
     const appendMsg=(message)=>{
         setAllChat([...allChat,message])
         localStorage.setItem('chats',allChat)
         window.scrollTo(0,window.innerHeight)
-        scrollToBottom()
     }
 
     const sendMsg=(e)=>{
@@ -54,20 +49,20 @@ const Chat = ({room}) => {
     })
 
     return (
-        <>
+        <div className="col-md-6">
+        {/* <VideoSearch /> */}
         <form>
-        <div style={{display:'flex',position:'fixed',width:'100%',bottom:0}}>
-            <input className='inpC' style={{margin:0,borderRadius:10,height:45,zIndex:10}} type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg} autoComplete='off'/>
+        <div style={{display:'flex',position:'fixed',width:'100%',bottom:10,zIndex:20}}>
+            <input className='inpC' style={{margin:0,borderRadius:10,height:45,zIndex:10,maxWidth:window.innerWidth}} type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg} autoComplete='off'/>
             <button className="btn" style={{height:45,margin:0,zIndex:10}} type="submit" onClick={e=>sendMsg(e)}>Send</button>    
         </div>
         </form> 
-        <div className="chat-box">
+        <ScrollToBottom className="chat-box">
         {allChat.map((x,key) =>
-            <h6 ref={messagesEndRef} style={{textAlign:'left'}} key={key}>{x}</h6>
+            <h6 style={{textAlign:'left'}} key={key}>{x}</h6>
         )}
-        <div  style={{marginTop:40}}/>
+        </ScrollToBottom>
         </div>
-        </>
     )
 }
  

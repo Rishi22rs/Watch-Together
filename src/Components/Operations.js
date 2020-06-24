@@ -1,11 +1,10 @@
-import io from "socket.io-client";
+import io from "socket.io-client"
 
 // export const socket = io("https://watchtogetherapp.herokuapp.com/");
  export const socket = io("http://localhost:8080/");
  
 let player=''
 let n=0
-let videoReadyHai=false
 let i=false
 
 export const loadVideoFunc = (videoId,room) => {
@@ -19,12 +18,12 @@ export const loadVideoFunc = (videoId,room) => {
         'autoplay': 0
       }
     });
-    if(room!==undefined)
-      socket.emit('addVideoId',{roomName:room,videoId}) 
   }
   if(i&&videoId){  
     loadThis(extractVideoId(videoId))
   }
+  if(room!==undefined)
+      socket.emit('addVideoId',{roomName:room,videoId}) 
   if(videoId)i=true
 };
 
@@ -45,6 +44,10 @@ const loadThis=(videoId)=>{
   player.loadVideoById({'videoId': videoId});
   pauseVideoFunc()
 }
+
+// export const newUserWantId=()=>{
+//   socket.emit('videoURL')
+// }
 ////////////////////////////////////////////////////
 
 socket.on('play',(play)=>{
@@ -60,6 +63,12 @@ socket.on('click',(clicked)=>{
 
 socket.on('thisVideo',(thisVideo)=>{
   loadVideoFunc(thisVideo)
+})
+
+socket.on('loVideoId',(videoId)=>{
+  console.log(videoId[0].videoId)
+  if(videoId[0].videoId)
+    loadVideoFunc(videoId[0].videoId)
 })
 
 ////////////////////////////////////////////////////
@@ -98,6 +107,7 @@ const playVideoFunc=()=>{
 }
 
 const pauseVideoFunc=()=> {
+  console.log(player)
 	player.pauseVideo();
 }
 
@@ -107,7 +117,10 @@ export const anchorMovement=()=>{
 }
   
 const clickedFunc=(event)=>{
-  var value=event.clientX/window.innerWidth*100
+  if(window.innerWidth>1000)
+    var value=event.clientX/(window.innerWidth/2)*100
+  else
+    var value=event.clientX/window.innerWidth*100
   player.seekTo(value/100*player.getDuration(), true);
   return value;
 } 

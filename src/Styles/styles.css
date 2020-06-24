@@ -4,17 +4,17 @@ body {
 #line{
   z-index: 20;
   width: 100%;
-  top:5%;
+  max-width: 1000px;
   border-bottom: 10px solid #FD5638;
   position: relative;
 }
 #anchor{
-  z-index: 10;
+  position: relative;
+  z-index: 30;
   width: 10px;
-  top:10px;
   height: 19px;
   border: 1px solid black;
-  position: relative;
+  position: absolute;
   background-color: black;
 }
 .chat{
@@ -26,5 +26,5 @@ body {
   position: relative;
   overflow-y: auto;
   width: 100%;
-  height: 30vh;
+  height:100%;
 }
