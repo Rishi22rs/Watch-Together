@@ -6,13 +6,14 @@ body {
   width: 100%;
   max-width: 1000px;
   border-bottom: 10px solid #FD5638;
+  bottom: 0;
   position: relative;
 }
 #anchor{
   position: relative;
   z-index: 30;
   width: 10px;
-  height: 19px;
+  height: 10px;
   border: 1px solid black;
   position: absolute;
   background-color: black;
@@ -23,8 +24,23 @@ body {
   top:60%;
 }
 .chat-box{
-  position: relative;
+  position:'absolute';
   overflow-y: auto;
   width: 100%;
-  height:100%;
+  height:25vh;
+}
+.chat-inp{
+  bottom:10px;
+}
+.UsersInRoom{
+  position:fixed;
+  z-index:200;
+}
+@media only screen and (min-width: 600px) {
+  .chat-inp{
+    bottom: 10%;
+  }
+  .chat-box{
+    height: 50%;
+  }
 }

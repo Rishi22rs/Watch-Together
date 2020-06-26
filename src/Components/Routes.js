@@ -13,9 +13,6 @@ const Routes = () => (
         <Switch>
             <Route path='/HeyGuys/:room' component={App}/>
         </Switch>
-        <Switch>
-            <Route path='/MyVideo' component={MyVideo}/>
-        </Switch>
     </Router>
 )
  

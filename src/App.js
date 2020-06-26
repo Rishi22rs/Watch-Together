@@ -12,18 +12,20 @@ const App = ({match}) => {
 
   const [left,setLeft]=useState(-500)
 
+
   const handleNav=()=>{
     setLeft(-500)
   }
 
   return (
-    <>
-    <div style={{position:'fixed',zIndex:200,left:left,transition:'0.5s'}}>
+    <div style={{overflowY:'hidden'}}>
+    <div className='UsersInRoom' style={{left:left,transition:'0.5s'}}>
         <UsersInRoom handleNav={handleNav}/>
     </div>
     <div style={{position:'fixed',display:'flex',flexDirection:'column',width:'100%'}}>
       <div style={{display:'flex',flexDirection:'column'}}>
         <button className='btn' style={{position:'absolute',zIndex:'10'}} onClick={()=>setLeft(0)}>&#9776;</button>
+        <p style={{margin:0,padding:0,marginLeft:0,fontFamily: 'Notable, sans-serif'}}>watchXP</p>
         <h3 style={{textAlign:'right',margin:'10px'}}>Room: {match.params.room}</h3>
       </div>
       <hr />
@@ -41,7 +43,7 @@ const App = ({match}) => {
         size={'100px'} 
         background={'black'} 
       />
-    </>
+    </div>
   );
 }
  

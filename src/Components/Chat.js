@@ -7,6 +7,7 @@ const Chat = ({room}) => {
     const history=useHistory()
     const [msg,setMsg]=useState('')
     const [allChat,setAllChat]=useState([])
+    const [disable,setDisable]=useState(false)
     useEffect(()=>{
         if(localStorage.getItem('chats')!==null)
             setAllChat(localStorage.getItem('chats').split(','))
@@ -26,15 +27,17 @@ const Chat = ({room}) => {
     
     const appendMsg=(message)=>{
         setAllChat([...allChat,message])
-        localStorage.setItem('chats',allChat)
-        window.scrollTo(0,window.innerHeight)
     }
 
     const sendMsg=(e)=>{
         e.preventDefault()
+        setDisable(true)
         appendMsg(`You: ${msg}`)
         socket.emit('send-chat-message',msg)
         setMsg('')
+        setTimeout(()=>{
+            setDisable(false)
+        },3000)
     }
 
     socket.on('user-connected',name=>{
@@ -52,8 +55,8 @@ const Chat = ({room}) => {
         <div className="col-md-6">
         {/* <VideoSearch /> */}
         <form>
-        <div style={{display:'flex',position:'fixed',width:'100%',bottom:10,zIndex:20}}>
-            <input className='inpC' style={{margin:0,borderRadius:10,height:45,zIndex:10,maxWidth:window.innerWidth}} type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg} autoComplete='off'/>
+        <div className="chat-inp" style={{display:'flex',position:'fixed',width:'100%',zIndex:20}}>
+            <input className='inpC' disabled={disable} style={!disable?{margin:0,borderRadius:10,height:45,zIndex:10}:{margin:0,borderRadius:10,height:45,zIndex:10,border:'3px solid black'}} type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg} autoComplete='off'/>
             <button className="btn" style={{height:45,margin:0,zIndex:10}} type="submit" onClick={e=>sendMsg(e)}>Send</button>    
         </div>
         </form> 

@@ -12,9 +12,9 @@ const UsersInRoom = ({handleNav}) => {
     return (
         <>
         <div className='room-members'>
-            <h3 style={{position:'fixed',background:'#0c0a0a',padding:20,width:300}}>Room members <button className="btn" onClick={handleNav}>&#10006;</button></h3>
-            <div style={{marginTop:150}}>
-            {users.map(x=><><h2 className="userName">{x.username}</h2><hr /></>)}
+            <h3 className='headin'>Room members <button className="btn" onClick={handleNav}>&#10006;</button></h3>
+            <div className='userList' style={{marginTop:150}}>
+            {users.map((x,key)=><><h2 key={key} className="userName">{x.username}</h2><hr /></>)}
             </div>
         </div>
         </>

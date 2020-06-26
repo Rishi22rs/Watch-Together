@@ -1,7 +1,7 @@
 import io from "socket.io-client"
 
-// export const socket = io("https://watchtogetherapp.herokuapp.com/");
- export const socket = io("http://localhost:8080/");
+export const socket = io("https://watchtogetherapp.herokuapp.com/");
+//  export const socket = io("http://localhost:8080/");
  
 let player=''
 let n=0

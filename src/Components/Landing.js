@@ -4,6 +4,7 @@ import {socket} from './Operations'
 import '../Landing.css'
 import Sky from 'react-sky';
 import Top from '../Grapics/top.svg'
+import Footer from './Footer'
 
 const Landing = () => {
     const [room,setRoom]=useState('')
@@ -46,10 +47,10 @@ const Landing = () => {
                 background={'black'} 
             />
             <div className="intro">
-                <h1 className="heading">Quarantine buddies</h1>
+                <h1 className="heading main" style={{fontFamily: 'Notable, sans-serif'}}>watchXP</h1>
                 <div className="intro-innerContainer">
                     <h3>What's this?</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p>WatchXP has a simple goal: to make it easy for friends and family to watch videos together, no matter where they are in the world. The whole idea of watchXP is to give you a cool place where you can relax and have fun with your friends adn family.</p>
                     <a class="btn" href='#create-room'>Create room</a>
                     <a class="btn" href='#room-list'>Join room</a>
                 </div>
@@ -66,6 +67,9 @@ const Landing = () => {
                 <div className='room-div'>
                 {roomList.map((x,key)=><div className='room-list-container'><h5 className='room-list'>{x}</h5><Link className='join' key={key} to={`/HeyGuys/${x}`}>Join</Link></div>)}
                 </div>:<div><p>No active rooms</p><br/><p>You must create one</p><br/></div>}
+                <div>
+                    <Footer />
+                </div>
             </div>
             {window.pageYOffset>40?<a className='top-btn' href='#main-landing'><img height='50' src={Top} alt='top'/></a>:<></>}
         </div>

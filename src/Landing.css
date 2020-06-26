@@ -8,6 +8,9 @@ html{
 #main-landing{
   height: 300%;
 }
+.main{
+  font-size: 50px;
+}
 h1,h3,h6,p{
   text-align: center;
   color:#FD5739;
@@ -119,7 +122,7 @@ h1,h3,h6,p{
 }
 .room-div{
   overflow:auto;
-  height:50%;
+  max-height: 40%;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -150,3 +153,40 @@ h1,h3,h6,p{
   z-index: 9;
   transition: 0.5s;
 }
+.headin{
+  position:fixed;
+  background:#0c0a0a;
+  padding:20px;
+  width:300px;
+}
+.hamCross{
+  display: block;
+}
+.footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #FD5638;
+  text-align: center;
+}
+/* @media only screen and (min-width: 600px) {
+  .room-members{
+    position: fixed;
+    overflow-y:auto;
+    top:50%;
+    width:50%;
+    height: 50%;
+    left: 50%;
+    background-color: rgb(39, 39, 39);
+    color: #FD5638;
+    z-index: 100;
+  }
+  .headin{
+    width: 50%;
+  }
+  .hamCross{
+    display: none;
+  }
+} */
