@@ -57,7 +57,7 @@ const Chat = ({room}) => {
         <form>
         <div className="chat-inp" style={{display:'flex',position:'fixed',width:'100%',zIndex:20}}>
             <input className='inpC' disabled={disable} style={!disable?{margin:0,borderRadius:10,height:45,zIndex:10}:{margin:0,borderRadius:10,height:45,zIndex:10,border:'3px solid black'}} type="text" placeholder="discuss" onChange={e=>setMsg(e.target.value)} value={msg} autoComplete='off'/>
-            <button className="btn" style={{height:45,margin:0,zIndex:10}} type="submit" onClick={e=>sendMsg(e)}>Send</button>    
+            <button className="btn" disabled={disable} style={{height:45,margin:0,zIndex:10}} type="submit" onClick={e=>sendMsg(e)}>Send</button>    
         </div>
         </form> 
         <ScrollToBottom className="chat-box">

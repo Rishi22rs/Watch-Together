@@ -67,9 +67,7 @@ const Landing = () => {
                 <div className='room-div'>
                 {roomList.map((x,key)=><div className='room-list-container'><h5 className='room-list'>{x}</h5><Link className='join' key={key} to={`/HeyGuys/${x}`}>Join</Link></div>)}
                 </div>:<div><p>No active rooms</p><br/><p>You must create one</p><br/></div>}
-                <div>
-                    <Footer />
-                </div>
+                <Footer />
             </div>
             {window.pageYOffset>40?<a className='top-btn' href='#main-landing'><img height='50' src={Top} alt='top'/></a>:<></>}
         </div>
