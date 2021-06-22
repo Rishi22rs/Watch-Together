@@ -13,7 +13,7 @@ const YouTubeVideo =({room})=>{
   const[searchBtn,setSearchBtn]=useState('none')
   const height=window.innerWidth*(9/16)
   let o=false
-  const API_KEY='AIzaSyCcIQgyqu1qVieNzwsKHPL0yFIxqpoX-CU'
+  const API_KEY='AIzaSyDLZJ7u8HCRsPRm33ypPNCI2MA_xnDtv7A'
 
   useEffect(() => {
     loadYT()

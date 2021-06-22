@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import App from '../App'
 import Landing from './Landing'
 import MyVideo from './MyVideo'
@@ -6,6 +6,7 @@ import MyVideo from './MyVideo'
 import{BrowserRouter as Router,Route, Switch} from 'react-router-dom'
 
 const Routes = () => (
+
     <Router>
         <Switch>
             <Route path='/' exact component={Landing}/>
